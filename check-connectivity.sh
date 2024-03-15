@@ -3,6 +3,10 @@
 
 CASE=$1
 
+if [ -z "$CASE" ]; then
+    CASE="all"
+fi
+
 ping_test() {
     sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 -w 1 $1 > /dev/null
     if [ $? -eq 0 ]; then
@@ -27,6 +31,7 @@ if [ "$CASE" == "dc2" ]; then
 fi
 
 if [ "$CASE" == "all" ]; then
+    echo "Running pings from leaf1 (dc1)"
     # ping all cases and print the results that pass and don't pass
     ping_test 10.0.0.12 "leaf2 (dc1)"
     ping_test 10.0.0.13 "leaf3 (dc1)"
