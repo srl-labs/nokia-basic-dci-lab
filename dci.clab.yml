@@ -16,39 +16,39 @@ topology:
       startup-config: configs/p1.partial.cfg
 
     ############## DC 1 ##############
-    dcgw1_dc1:
+    dcgw1-dc1:
       kind: nokia_sros
-      startup-config: configs/dcgw1_dc1.partial.cfg
+      startup-config: configs/dcgw1-dc1.partial.cfg
 
-    dcgw2_dc1:
+    dcgw2-dc1:
       kind: nokia_sros
-      startup-config: configs/dcgw2_dc1.partial.cfg
+      startup-config: configs/dcgw2-dc1.partial.cfg
 
-    spine1_dc1:
+    spine1-dc1:
       kind: nokia_srlinux
-      startup-config: configs/spine1_dc1.cfg
+      startup-config: configs/spine1-dc1.cfg
 
-    spine2_dc1:
+    spine2-dc1:
       kind: nokia_srlinux
-      startup-config: configs/spine2_dc1.cfg
+      startup-config: configs/spine2-dc1.cfg
 
-    leaf1_dc1:
+    leaf1-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf1_dc1.cfg
+      startup-config: configs/leaf1-dc1.cfg
 
-    leaf2_dc1:
+    leaf2-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf2_dc1.cfg
+      startup-config: configs/leaf2-dc1.cfg
 
-    leaf3_dc1:
+    leaf3-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf3_dc1.cfg
+      startup-config: configs/leaf3-dc1.cfg
 
-    leaf4_dc1:
+    leaf4-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf4_dc1.cfg
+      startup-config: configs/leaf4-dc1.cfg
 
-    client1_dc1:
+    client1-dc1:
       kind: linux
       image: ghcr.io/hellt/network-multitool
       binds:
@@ -57,53 +57,53 @@ topology:
       #   - ash -c "/client.sh dc1 1"
 
     ############## DC 2 ##############
-    dcgw1_dc2:
+    dcgw1-dc2:
       kind: nokia_sros
-      startup-config: configs/dcgw1_dc2.partial.cfg
+      startup-config: configs/dcgw1-dc2.partial.cfg
       stages:
         create:
           wait-for:
-            - node: dcgw1_dc1
+            - node: dcgw1-dc1
               stage: healthy
-            - node: dcgw2_dc1
+            - node: dcgw2-dc1
               stage: healthy
 
-    dcgw2_dc2:
+    dcgw2-dc2:
       kind: nokia_sros
-      startup-config: configs/dcgw2_dc2.partial.cfg
+      startup-config: configs/dcgw2-dc2.partial.cfg
       stages:
         create:
           wait-for:
-            - node: dcgw1_dc1
+            - node: dcgw1-dc1
               stage: healthy
-            - node: dcgw2_dc1
+            - node: dcgw2-dc1
               stage: healthy
 
-    spine1_dc2:
+    spine1-dc2:
       kind: nokia_srlinux
-      startup-config: configs/spine1_dc2.cfg
+      startup-config: configs/spine1-dc2.cfg
 
-    spine2_dc2:
+    spine2-dc2:
       kind: nokia_srlinux
-      startup-config: configs/spine2_dc2.cfg
+      startup-config: configs/spine2-dc2.cfg
 
-    leaf1_dc2:
+    leaf1-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf1_dc2.cfg
+      startup-config: configs/leaf1-dc2.cfg
 
-    leaf2_dc2:
+    leaf2-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf2_dc2.cfg
+      startup-config: configs/leaf2-dc2.cfg
 
-    leaf3_dc2:
+    leaf3-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf3_dc2.cfg
+      startup-config: configs/leaf3-dc2.cfg
 
-    leaf4_dc2:
+    leaf4-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf4_dc2.cfg
+      startup-config: configs/leaf4-dc2.cfg
 
-    client1_dc2:
+    client1-dc2:
       kind: linux
       image: ghcr.io/hellt/network-multitool
       binds:
@@ -116,62 +116,62 @@ topology:
     #######################################################
     ################## DCGW - CORE#########################
     #######################################################
-    - endpoints: ["dcgw1_dc1:eth1", "p1:eth5"]
-    - endpoints: ["dcgw2_dc1:eth1", "p1:eth6"]
+    - endpoints: ["dcgw1-dc1:eth1", "p1:eth5"]
+    - endpoints: ["dcgw2-dc1:eth1", "p1:eth6"]
     #######################################################
     ################## DCGW - Spine #######################
     #######################################################
-    - endpoints: ["spine1_dc1:e1-31", "dcgw1_dc1:eth3"]
-    - endpoints: ["spine1_dc1:e1-32", "dcgw2_dc1:eth3"]
-    - endpoints: ["spine2_dc1:e1-31", "dcgw1_dc1:eth2"]
-    - endpoints: ["spine2_dc1:e1-32", "dcgw2_dc1:eth2"]
+    - endpoints: ["spine1-dc1:e1-31", "dcgw1-dc1:eth3"]
+    - endpoints: ["spine1-dc1:e1-32", "dcgw2-dc1:eth3"]
+    - endpoints: ["spine2-dc1:e1-31", "dcgw1-dc1:eth2"]
+    - endpoints: ["spine2-dc1:e1-32", "dcgw2-dc1:eth2"]
     #######################################################
     ################## Spine 1 - Leafs ####################
     #######################################################
-    - endpoints: ["spine1_dc1:e1-3", "leaf1_dc1:e1-31"]
-    - endpoints: ["spine1_dc1:e1-4", "leaf2_dc1:e1-31"]
-    - endpoints: ["spine1_dc1:e1-5", "leaf3_dc1:e1-31"]
-    - endpoints: ["spine1_dc1:e1-6", "leaf4_dc1:e1-31"]
+    - endpoints: ["spine1-dc1:e1-3", "leaf1-dc1:e1-31"]
+    - endpoints: ["spine1-dc1:e1-4", "leaf2-dc1:e1-31"]
+    - endpoints: ["spine1-dc1:e1-5", "leaf3-dc1:e1-31"]
+    - endpoints: ["spine1-dc1:e1-6", "leaf4-dc1:e1-31"]
     #######################################################
     ################## Spine 2 - Leafs ####################
     #######################################################
-    - endpoints: ["spine2_dc1:e1-3", "leaf1_dc1:e1-32"]
-    - endpoints: ["spine2_dc1:e1-4", "leaf2_dc1:e1-32"]
-    - endpoints: ["spine2_dc1:e1-5", "leaf3_dc1:e1-32"]
-    - endpoints: ["spine2_dc1:e1-6", "leaf4_dc1:e1-32"]
+    - endpoints: ["spine2-dc1:e1-3", "leaf1-dc1:e1-32"]
+    - endpoints: ["spine2-dc1:e1-4", "leaf2-dc1:e1-32"]
+    - endpoints: ["spine2-dc1:e1-5", "leaf3-dc1:e1-32"]
+    - endpoints: ["spine2-dc1:e1-6", "leaf4-dc1:e1-32"]
     #######################################################
     ################## Clients - Leafs ####################
     #######################################################
-    - endpoints: ["client1_dc1:eth1", "leaf1_dc1:e1-1"]
+    - endpoints: ["client1-dc1:eth1", "leaf1-dc1:e1-1"]
 
     ############## DC 2 ##############
     #######################################################
     ################## DCGW - CORE#########################
     #######################################################
-    - endpoints: ["dcgw1_dc2:eth1", "p1:eth1"]
-    - endpoints: ["dcgw2_dc2:eth1", "p1:eth2"]
+    - endpoints: ["dcgw1-dc2:eth1", "p1:eth1"]
+    - endpoints: ["dcgw2-dc2:eth1", "p1:eth2"]
     #####################################################
     ################## DCGW - Spine #####################
     #####################################################
-    - endpoints: ["spine1_dc2:e1-31", "dcgw1_dc2:eth3"]
-    - endpoints: ["spine1_dc2:e1-32", "dcgw2_dc2:eth3"]
-    - endpoints: ["spine2_dc2:e1-31", "dcgw1_dc2:eth2"]
-    - endpoints: ["spine2_dc2:e1-32", "dcgw2_dc2:eth2"]
+    - endpoints: ["spine1-dc2:e1-31", "dcgw1-dc2:eth3"]
+    - endpoints: ["spine1-dc2:e1-32", "dcgw2-dc2:eth3"]
+    - endpoints: ["spine2-dc2:e1-31", "dcgw1-dc2:eth2"]
+    - endpoints: ["spine2-dc2:e1-32", "dcgw2-dc2:eth2"]
     #####################################################
     ################## Spine 1 - Leafs ##################
     #####################################################
-    - endpoints: ["spine1_dc2:e1-3", "leaf1_dc2:e1-31"]
-    - endpoints: ["spine1_dc2:e1-4", "leaf2_dc2:e1-31"]
-    - endpoints: ["spine1_dc2:e1-5", "leaf3_dc2:e1-31"]
-    - endpoints: ["spine1_dc2:e1-6", "leaf4_dc2:e1-31"]
+    - endpoints: ["spine1-dc2:e1-3", "leaf1-dc2:e1-31"]
+    - endpoints: ["spine1-dc2:e1-4", "leaf2-dc2:e1-31"]
+    - endpoints: ["spine1-dc2:e1-5", "leaf3-dc2:e1-31"]
+    - endpoints: ["spine1-dc2:e1-6", "leaf4-dc2:e1-31"]
     #######################################################
     ################## Spine 2 - Leafs ####################
     #######################################################
-    - endpoints: ["spine2_dc2:e1-3", "leaf1_dc2:e1-32"]
-    - endpoints: ["spine2_dc2:e1-4", "leaf2_dc2:e1-32"]
-    - endpoints: ["spine2_dc2:e1-5", "leaf3_dc2:e1-32"]
-    - endpoints: ["spine2_dc2:e1-6", "leaf4_dc2:e1-32"]
+    - endpoints: ["spine2-dc2:e1-3", "leaf1-dc2:e1-32"]
+    - endpoints: ["spine2-dc2:e1-4", "leaf2-dc2:e1-32"]
+    - endpoints: ["spine2-dc2:e1-5", "leaf3-dc2:e1-32"]
+    - endpoints: ["spine2-dc2:e1-6", "leaf4-dc2:e1-32"]
     #######################################################
     ################## Clients - Leafs ####################
     #######################################################
-    - endpoints: ["client1_dc2:eth1", "leaf1_dc2:e1-1"]
+    - endpoints: ["client1-dc2:eth1", "leaf1-dc2:e1-1"]
