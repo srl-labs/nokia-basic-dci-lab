@@ -62,7 +62,7 @@ topology:
       binds:
         - configs/client.sh:/client.sh
       exec:
-        - bash -c "/client.sh dc1 1"
+        - bash -c "/client.sh dc1 4"
 
     ############## DC 2 ##############
     # dcgw1-dc2:

@@ -18,6 +18,8 @@ ip link set dev eth1 address aa:c1:ab:${FIRST_OCTET}:00:0${ID}
 
 # a route towards the anycast gw
 ip route add ${FIRST_OCTET}.0.0.0/24 via ${FIRST_OCTET}.0.0.254
+# a route towards the leaf loopbacks in the l3 vrf
+ip route add ${FIRST_OCTET}.1.0.0/24 via ${FIRST_OCTET}.0.0.254
 
 # set PS1
 echo "export PS1='\[\033[0;32m\]\u@\h:\[\033[36m\]\W\[\033[0m\] \$ '" > /root/.bashrc
