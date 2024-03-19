@@ -16,7 +16,7 @@ alias clabverter='sudo docker run --user $(id -u) \
 and then run
 
 ```
-clabverter --stdout --naming non-prefixed --disableExpose true \
+clabverter --stdout --naming non-prefixed --disableExpose \
 | kubectl apply -f -
 ```
 
