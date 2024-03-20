@@ -20,6 +20,16 @@ clabverter --stdout --naming non-prefixed --disableExpose \
 | kubectl apply -f -
 ```
 
+## Ping tests
+
+### Automated
+
+`bash ./netcheck-c9s.sh`
+
+### Manual
+
+`k exec -it -n c9s-dci client1-dc1-77cc46c75f-txnc8 -- docker exec -it client1-dc1 ping 10.0.0.4`
+
 ## Misc
 
 ### Replace underscores in names
