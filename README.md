@@ -59,6 +59,27 @@ kubectl exec -it -n c9s-dci <pod-name-for-client1> -- docker exec -it client1-dc
 ./netcheck.sh
 ```
 
+## Cleanup
+
+### Containerlab
+
+```bash
+sudo clab destroy -c
+```
+
+### c9s
+
+```bash
+kubectl delete namespace c9s-dci
+```
+
+If you wish to also uninstall the clabernetes:
+
+```bash
+helm uninstall -n c9s clabernetes && \
+kubectl delete namespace c9s
+```
+
 ## Misc
 
 ### Traffic capture with wireshark
