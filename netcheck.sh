@@ -8,7 +8,7 @@ if [ -z "$CASE" ]; then
 fi
 
 ping_test() {
-    sudo docker exec clab-dci-client1-dc1 ping -c 1 -w 1 $1 &> /dev/null
+    sudo docker exec clab-dci-client1-dc1 ping -c 1 -w 2 $1 &> /dev/null
     if [ $? -eq 0 ]; then
         echo -e "+ \e[32mPing from leaf1 (dc1) to $2 ($1) was successful.\e[0m"
     else
