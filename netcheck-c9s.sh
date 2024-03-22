@@ -1,5 +1,5 @@
 #!/bin/bash
-# run as bash check-connectivity.sh all
+# example usage: ./netcheck-c9s.sh
 
 CASE=$1
 

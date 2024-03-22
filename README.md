@@ -2,35 +2,70 @@
 
 A basic Datacenter Interconnect (DCI) lab for with leaf/spine switches powered by SR Linux and DC Gateway and P routers powered by Nokia 7750 SR OS.
 
+## Deploy on containerlab
+
+From within the cloned directory run:
+
+```bash
+sudo clab deploy -c
+```
+
 ## Deploy on c9s
 
-Setting up additional volume mount to get access to the license file
+### Install clabernetes
 
+```bash
+helm upgrade --install --create-namespace --namespace c9s \
+    clabernetes oci://ghcr.io/srl-labs/clabernetes/clabernetes
 ```
+
+### Setup clabverter
+
+```bash
 alias clabverter='sudo docker run --user $(id -u) \
     -v /opt/nokia:/opt/nokia \
     -v $(pwd):/clabernetes/work --rm \
     ghcr.io/srl-labs/clabernetes/clabverter:latest'
 ```
 
-and then run
+### Run clabverter
 
-```
+```bash
 clabverter --stdout --naming non-prefixed --disableExpose \
 | kubectl apply -f -
 ```
 
 ## Ping tests
 
-### Automated
+### With c9s
 
-`bash ./netcheck-c9s.sh`
+Automated ping tests from client1 towards client2, client3 and client4 can be done with:
 
-### Manual
+```bash
+./netcheck-c9s.sh
+```
 
-`k exec -it -n c9s-dci client1-dc1-77cc46c75f-txnc8 -- docker exec -it client1-dc1 ping 10.0.0.4`
+The output will show the success or failure of the ping tests for each destination.
+
+To run the ping tests manually, use the following command:
+
+```bash
+kubectl exec -it -n c9s-dci <pod-name-for-client1> -- docker exec -it client1-dc1 ping 10.0.0.4
+```
+
+### With containerlab
+
+```bash
+./netcheck.sh
+```
 
 ## Misc
+
+### Traffic capture with wireshark
+
+```bash
+pcapc9s.sh <host-with-kubectl> c9s-dci client4 eth1
+```
 
 ### Replace underscores in names
 
