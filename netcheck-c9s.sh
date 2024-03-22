@@ -22,19 +22,6 @@ ping_test() {
     fi
 }
 
-if [ "$CASE" == "dc1" ]; then
-    sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 10.0.0.12
-    sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 10.0.0.13
-    sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 10.0.0.14
-    exit 0
-fi
-
-if [ "$CASE" == "dc2" ]; then
-    sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 20.0.0.12
-    sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 20.0.0.13
-    sudo docker exec clab-dci-leaf1_dc1 ip netns exec srbase-ip-vrf101 ping -c 1 20.0.0.14
-    exit 0
-fi
 
 if [ "$CASE" == "all" ]; then
     echo "Running pings from client1/dc1 (10.0.0.1)"
