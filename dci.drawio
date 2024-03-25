@@ -1,6 +1,6 @@
-<mxfile compressed="false" host="app.diagrams.net" modified="2024-03-24T19:28:02.775Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="yOD73NC173F8eo-uew0X" version="24.0.7" type="github" pages="2">
+<mxfile compressed="false" host="app.diagrams.net" modified="2024-03-25T11:42:53.511Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="5RJ5JctR5sUgfx1lUzGL" version="24.1.0" type="github" pages="2">
   <diagram id="Network Topology" name="Physical topology">
-    <mxGraphModel dx="2074" dy="1155" grid="0" gridSize="2" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" background="#4D5766" math="0" shadow="0">
+    <mxGraphModel dx="1803" dy="1004" grid="0" gridSize="2" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" background="#4D5766" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -54,7 +54,7 @@
           </mxCell>
         </object>
         <object label="" src_label="eth1" trgt_label="eth5" source="dcgw1-dc1" target="p1" id="0c637271b958e190790944e216d0e1cd">
-          <mxCell style="endArrow=none;jumpStyle=gap;entryY=0.25;exitY=0;entryX=0;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;entryDx=0;entryDy=0;strokeColor=#98A2AE;" parent="1" source="XFLzxQZfM_v2sXhXUsD--105" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
+          <mxCell style="endArrow=none;jumpStyle=gap;entryY=0.25;exitY=0;entryX=0;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;entryDx=0;entryDy=0;strokeColor=#98A2AE;rounded=0;curved=0;" parent="1" source="XFLzxQZfM_v2sXhXUsD--105" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
             <mxGeometry relative="1" as="geometry">
               <mxPoint x="1312.5" y="534.3199999999999" as="sourcePoint" />
               <mxPoint x="1682.5000000000002" y="410.5000000000002" as="targetPoint" />
@@ -65,12 +65,12 @@
           </mxCell>
         </object>
         <object label="" src_label="eth1" trgt_label="eth6" source="dcgw2-dc1" target="p1" id="ba817ebb1d00d02cf8c0dcaba1a7e5be">
-          <mxCell style="endArrow=none;jumpStyle=gap;entryY=0.75;exitY=0;entryX=0;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;entryDx=0;entryDy=0;strokeColor=#98A2AE;" parent="1" source="XFLzxQZfM_v2sXhXUsD--118" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
+          <mxCell style="endArrow=none;jumpStyle=gap;entryY=0.75;exitY=0;entryX=0;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;entryDx=0;entryDy=0;strokeColor=#98A2AE;rounded=0;curved=0;" parent="1" source="XFLzxQZfM_v2sXhXUsD--118" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
             <mxGeometry relative="1" as="geometry">
               <mxPoint x="1452.5" y="534.3199999999999" as="sourcePoint" />
               <mxPoint x="1682.5000000000002" y="410.5000000000002" as="targetPoint" />
               <Array as="points">
-                <mxPoint x="1466" y="479.5" />
+                <mxPoint x="1467" y="477" />
               </Array>
             </mxGeometry>
           </mxCell>
@@ -716,7 +716,7 @@
           </mxCell>
         </object>
         <object label="" src_label="eth1" trgt_label="eth5" source="dcgw1-dc1" target="p1" id="XFLzxQZfM_v2sXhXUsD--149">
-          <mxCell style="endArrow=none;jumpStyle=gap;entryY=0.75;exitY=0;entryX=1;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;entryDx=0;entryDy=0;strokeColor=#98A2AE;" parent="1" source="XFLzxQZfM_v2sXhXUsD--251" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
+          <mxCell style="endArrow=none;jumpStyle=gap;entryY=0.75;exitY=0;entryX=1;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;entryDx=0;entryDy=0;strokeColor=#98A2AE;rounded=0;curved=0;" parent="1" source="XFLzxQZfM_v2sXhXUsD--251" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
             <mxGeometry relative="1" as="geometry">
               <mxPoint x="2015.5" y="534.3199999999999" as="sourcePoint" />
               <mxPoint x="2357" y="456.5" as="targetPoint" />
@@ -727,12 +727,12 @@
           </mxCell>
         </object>
         <object label="" src_label="eth1" trgt_label="eth6" source="dcgw2-dc1" target="p1" id="XFLzxQZfM_v2sXhXUsD--150">
-          <mxCell style="endArrow=none;jumpStyle=gap;exitY=0;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;strokeColor=#98A2AE;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="XFLzxQZfM_v2sXhXUsD--259" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
+          <mxCell style="endArrow=none;jumpStyle=gap;exitY=0;exitX=0.5;exitDx=0;exitDy=0;fontFamily=Google Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DGoogle%2BSans;strokeColor=#98A2AE;entryX=1;entryY=0.25;entryDx=0;entryDy=0;rounded=0;curved=0;" parent="1" source="XFLzxQZfM_v2sXhXUsD--259" target="XFLzxQZfM_v2sXhXUsD--138" edge="1">
             <mxGeometry relative="1" as="geometry">
               <mxPoint x="2155.5" y="534.3199999999999" as="sourcePoint" />
               <mxPoint x="1817" y="455.5" as="targetPoint" />
               <Array as="points">
-                <mxPoint x="2099" y="440.5" />
+                <mxPoint x="2098" y="438" />
               </Array>
             </mxGeometry>
           </mxCell>
