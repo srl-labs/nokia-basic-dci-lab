@@ -2,6 +2,10 @@
 
 A basic Datacenter Interconnect (DCI) lab for with leaf/spine switches powered by SR Linux and DC Gateway and P routers powered by Nokia 7750 SR OS.
 
+## Topology
+
+![image](https://github.com/srl-labs/nokia-basic-dci-lab/assets/17744051/f16f45d6-a4fd-4857-9ae9-864a998c86fd)
+
 ## Deploy on containerlab
 
 From within the cloned directory run:
@@ -35,7 +39,7 @@ clabverter --stdout --naming non-prefixed --disableExpose \
 | kubectl apply -f -
 ```
 
-## Ping tests
+## Basic Ping Test
 
 ### With c9s
 
@@ -58,6 +62,10 @@ kubectl exec -it -n c9s-dci <pod-name-for-client1> -- docker exec -it client1-dc
 ```bash
 ./netcheck.sh
 ```
+
+## L3 DCI Connectivity Validation
+
+## L2 DCI Connectivity Validation
 
 ## Cleanup
 
