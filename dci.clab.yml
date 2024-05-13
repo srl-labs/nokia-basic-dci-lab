@@ -1,13 +1,17 @@
 name: dci
 
+mgmt:
+  network: dci
+  ipv4-subnet: 172.0.200.0/24
+
 topology:
   kinds:
     nokia_sros:
-      image: registry.srlinux.dev/pub/vr-sros:23.10.R1
+      image: registry.srlinux.dev/pub/vr-sros:24.3.R1
       type: sr-1s
-      license: /opt/nokia/sros/r23_license.key
+      license: /opt/srexperts/license-sros24.txt
     nokia_srlinux:
-      image: ghcr.io/nokia/srlinux:23.10.1
+      image: registry.srlinux.dev/pub/srlinux:24.3.1
       type: ixrd3
   nodes:
     ############## CORE ##############
