@@ -4,7 +4,8 @@ A basic Datacenter Interconnect (DCI) lab for with leaf/spine switches powered b
 
 ## Topology
 
-![image](https://github.com/srl-labs/nokia-basic-dci-lab/assets/17744051/f16f45d6-a4fd-4857-9ae9-864a998c86fd)
+![image](https://github.com/srl-labs/nokia-basic-dci-lab/assets/17744051/1f3d61a0-ae6a-42b2-b680-c282a6462d41)
+
 
 ## Deploy on containerlab
 
