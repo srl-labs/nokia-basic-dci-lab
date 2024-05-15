@@ -2,10 +2,19 @@
 
 A basic Datacenter Interconnect (DCI) lab for with leaf/spine switches powered by SR Linux and DC Gateway and P routers powered by Nokia 7750 SR OS.
 
+In this lab, you will see two DC fabrics with VXLAN/EVPN and a WAN network that interconnects them with BGP-VPN. 
+
+There are clients connected to some Leaf routers(see the topology below) in every site to test the connectivity and generate some in the fabric.
+
+## Images & License
+
+This lab requires containerized images of both SR Linux and SROS and a valid vSIM license for SROS.
+SR Linux container image is automatically pulled from the public repository upon deploying the lab. (See the topology file)
+SROS container image is available via a Nokia private repository, but can also be derived from an vSIM VM image via [VRNETLAB](https://containerlab.dev/manual/vrnetlab/#vrnetlab).
+
 ## Topology
 
 ![image](https://github.com/srl-labs/nokia-basic-dci-lab/assets/17744051/1f3d61a0-ae6a-42b2-b680-c282a6462d41)
-
 
 ## Deploy on containerlab
 
@@ -40,7 +49,13 @@ clabverter --stdout --naming non-prefixed --disableExpose \
 | kubectl apply -f -
 ```
 
-## Basic Ping Test
+## Client connectivity validation
+
+### With containerlab
+
+```bash
+./netcheck.sh
+```
 
 ### With c9s
 
@@ -57,16 +72,6 @@ To run the ping tests manually, use the following command:
 ```bash
 kubectl exec -it -n c9s-dci <pod-name-for-client1> -- docker exec -it client1-dc1 ping 10.0.0.4
 ```
-
-### With containerlab
-
-```bash
-./netcheck.sh
-```
-
-## L3 DCI Connectivity Validation
-
-## L2 DCI Connectivity Validation
 
 ## Cleanup
 
