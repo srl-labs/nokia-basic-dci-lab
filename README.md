@@ -51,6 +51,10 @@ clabverter --stdout --naming non-prefixed --disableExpose \
 
 ## Client connectivity validation
 
+![image](https://github.com/srl-labs/nokia-basic-dci-lab/assets/17744051/8df72bfe-9a2e-4a0d-a12a-26302f1054f9)
+
+The `netcheck.sh` script will run ping from client1 in DC1 to other clients. That will validate connectivity within and between the dc fabrics.
+
 ### With containerlab
 
 ```bash
