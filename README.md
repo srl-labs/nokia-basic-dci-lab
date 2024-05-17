@@ -4,7 +4,7 @@ A basic Datacenter Interconnect (DCI) lab for with leaf/spine switches powered b
 
 In this lab, you will see two DC fabrics with VXLAN/EVPN and a WAN network that interconnects them with BGP-VPN. 
 
-There are clients connected to some Leaf routers(see the topology below) in every site to test the connectivity and generate some in the fabric.
+There are clients connected to Leaf routers(see the topology below) in every site to test the connectivity in the fabric as well as inter-dc.
 
 ## Images & License
 
