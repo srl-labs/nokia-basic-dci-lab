@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OC Demo</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/noknavbarlogo.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="bigContainer">
+
+        <div class="automationContainer">
+            
+            <img src="{{ url_for('static', filename='images/ocicon.png') }}" alt="OC Logo">
+
+            <h1>DCI Lab</h1>
+
+            <h2>OpenConfig Demo using pyGNMI</h2>
+
+            <div class="box">
+
+                <div class="box-title">Changing admin-state</div>
+
+                <div class="box-content">
+
+                    <form method="POST">
+
+                        <select name="interface" id="interface">
+                            {% for interface in routersAndInterfaces %}
+                                <option value="{{ interface }}">{{ interface }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <button class="button" name="action" value="toggleInterface" type="submit">Toggle</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="box">
+
+                <div class="box-title">Enabling services for the customer</div>
+
+                <div class="box-content">
+
+                    <form method="POST">
+
+                        <div class="switch-item">
+                            <span class="switch-text">Enable local CDN #1 Service</span>
+                            <label class="switch">
+                                <input type="checkbox" name="cdn" value="True" {% if cdn %}checked{% endif %}>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="switch-item">
+                            <span class="switch-text">Enable remote CDN #2 Service</span>
+                            <label class="switch">
+                                <input type="checkbox" name="redundancy" value="True" {% if redundancy %}checked{% endif %}>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="switch-item">
+                            <span class="switch-text">Enable Internet Service</t></span>
+                            <label class="switch">
+                                <input type="checkbox" name="internet" value="True" {% if internet %}checked{% endif %}>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <button class="button" name="action" value="setServices" type="submit">Set</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+            <img class="img2" src="{{ url_for('static', filename='images/nokialogo.png') }}" alt="Nokia Logo">
+
+        </div>
+
+        <div class="dashboard">
+            <iframe width="100%" frameborder="0" src="http://10.0.2.228:3111/d/f4a289f9-2472-4969-9653-a681a3268955/openconfig-demo?orgId=1&refresh=5s" frameborder="0"></iframe>
+        </div>
+
+    </div>
+</body>
+</html>

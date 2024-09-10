@@ -7,56 +7,65 @@ mgmt:
 topology:
   kinds:
     nokia_sros:
-      image: registry.srlinux.dev/pub/vr-sros:24.3.R1
+      image: registry.srlinux.dev/pub/vr-sros:24.3.R2-1
       type: sr-1s
-      license: /opt/srexperts/license-sros24.txt
+      license: /root/ClabAsCode/sros24license.txt
     nokia_srlinux:
-      image: registry.srlinux.dev/pub/srlinux:24.3.1
+      image: ghcr.io/nokia/srlinux:24.3.2
       type: ixrd3
   nodes:
     ############## CORE ##############
     p1:
       kind: nokia_sros
-      startup-config: configs/p1.partial.cfg
+      startup-config: configs/routers/p1.partial.cfg
+      mgmt-ipv4: 172.0.200.11
 
     ############## DC 1 ##############
     dcgw1-dc1:
       kind: nokia_sros
-      startup-config: configs/dcgw1-dc1.partial.cfg
+      startup-config: configs/routers/dcgw1-dc1.partial.cfg
+      mgmt-ipv4: 172.0.200.101
 
     dcgw2-dc1:
       kind: nokia_sros
-      startup-config: configs/dcgw2-dc1.partial.cfg
+      startup-config: configs/routers/dcgw2-dc1.partial.cfg
+      mgmt-ipv4: 172.0.200.102
 
     spine1-dc1:
       kind: nokia_srlinux
-      startup-config: configs/spine1-dc1.cfg
+      startup-config: configs/routers/spine1-dc1.cfg
+      mgmt-ipv4: 172.0.200.111
 
     spine2-dc1:
       kind: nokia_srlinux
-      startup-config: configs/spine2-dc1.cfg
+      startup-config: configs/routers/spine2-dc1.cfg
+      mgmt-ipv4: 172.0.200.112
 
     leaf1-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf1-dc1.cfg
+      startup-config: configs/routers/leaf1-dc1.cfg
+      mgmt-ipv4: 172.0.200.121
 
     leaf2-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf2-dc1.cfg
+      startup-config: configs/routers/leaf2-dc1.cfg
+      mgmt-ipv4: 172.0.200.122
 
     leaf3-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf3-dc1.cfg
+      startup-config: configs/routers/leaf3-dc1.cfg
+      mgmt-ipv4: 172.0.200.123
 
     leaf4-dc1:
       kind: nokia_srlinux
-      startup-config: configs/leaf4-dc1.cfg
+      startup-config: configs/routers/leaf4-dc1.cfg
+      mgmt-ipv4: 172.0.200.124
 
     client1-dc1:
       kind: linux
       image: ghcr.io/hellt/network-multitool
       binds:
-        - configs/client.sh:/client.sh
+        - configs/clients/client.sh:/client.sh
       exec:
         - bash -c "/client.sh dc1 1"
 
@@ -64,14 +73,15 @@ topology:
       kind: linux
       image: ghcr.io/hellt/network-multitool
       binds:
-        - configs/client.sh:/client.sh
+        - configs/clients/client.sh:/client.sh
       exec:
         - bash -c "/client.sh dc1 4"
 
     ############## DC 2 ##############
     dcgw1-dc2:
       kind: nokia_sros
-      startup-config: configs/dcgw1-dc2.partial.cfg
+      startup-config: configs/routers/dcgw1-dc2.partial.cfg
+      mgmt-ipv4: 172.0.200.201
       stages:
         create:
           wait-for:
@@ -82,7 +92,8 @@ topology:
 
     dcgw2-dc2:
       kind: nokia_sros
-      startup-config: configs/dcgw2-dc2.partial.cfg
+      startup-config: configs/routers/dcgw2-dc2.partial.cfg
+      mgmt-ipv4: 172.0.200.202
       stages:
         create:
           wait-for:
@@ -93,42 +104,100 @@ topology:
 
     spine1-dc2:
       kind: nokia_srlinux
-      startup-config: configs/spine1-dc2.cfg
+      startup-config: configs/routers/spine1-dc2.cfg
+      mgmt-ipv4: 172.0.200.211
 
     spine2-dc2:
       kind: nokia_srlinux
-      startup-config: configs/spine2-dc2.cfg
+      startup-config: configs/routers/spine2-dc2.cfg
+      mgmt-ipv4: 172.0.200.212
 
     leaf1-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf1-dc2.cfg
+      startup-config: configs/routers/leaf1-dc2.cfg
+      mgmt-ipv4: 172.0.200.221
 
     leaf2-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf2-dc2.cfg
+      startup-config: configs/routers/leaf2-dc2.cfg
+      mgmt-ipv4: 172.0.200.222
 
     leaf3-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf3-dc2.cfg
+      startup-config: configs/routers/leaf3-dc2.cfg
+      mgmt-ipv4: 172.0.200.223
 
     leaf4-dc2:
       kind: nokia_srlinux
-      startup-config: configs/leaf4-dc2.cfg
+      startup-config: configs/routers/leaf4-dc2.cfg
+      mgmt-ipv4: 172.0.200.224
 
     client3-dc2:
       kind: linux
       image: ghcr.io/hellt/network-multitool
       binds:
-        - configs/client.sh:/client.sh
+        - configs/clients/client.sh:/client.sh
       exec:
         - bash -c "/client.sh dc2 1"
     client4-dc2:
       kind: linux
       image: ghcr.io/hellt/network-multitool
       binds:
-        - configs/client.sh:/client.sh
+        - configs/clients/client.sh:/client.sh
       exec:
         - bash -c "/client.sh dc2 4"
+
+    ### TELEMETRY STACK ###
+    gnmicDCI:
+      kind: linux
+      mgmt-ipv4: 172.0.200.3
+      image: ghcr.io/openconfig/gnmic:0.38.1
+      binds:
+        - configs/gnmic/gnmic-config.yml:/gnmic-config.yml:ro
+      cmd: --config /gnmic-config.yml --log subscribe
+      group: "10"
+
+    prometheusDCI:
+      kind: linux
+      mgmt-ipv4: 172.0.200.4
+      image: quay.io/prometheus/prometheus:v2.47.2
+      binds:
+        - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      cmd: --config.file=/etc/prometheus/prometheus.yml
+      ports:
+        - 9190:9090
+      group: "10"
+
+    grafanaDCI:
+      kind: linux
+      mgmt-ipv4: 172.0.200.5
+      image: grafana/grafana:10.2.1
+      binds:
+        - configs/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+        - configs/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+        - configs/grafana/dashboards:/var/lib/grafana/dashboards
+      ports:
+        - 3111:3000
+      env:
+        GF_INSTALL_PLUGINS: https://algenty.github.io/flowcharting-repository/archives/agenty-flowcharting-panel-1.0.0d.220606199-SNAPSHOT.zip;agenty-flowcharting-panel
+        # env vars to enable anonymous access
+        GF_ORG_ROLE: "Admin"
+        GF_ORG_NAME: "Main Org"
+        GF_AUTH_ANONYMOUS_ENABLED: "true"
+        GF_AUTH_ANONYMOUS: "true"
+        GF_SECURITY_ALLOW_EMBEDDING: "true"
+      group: "10"
+
+    panelDCI:
+      kind: linux
+      mgmt-ipv4: 172.0.200.6
+      image: nahuelcoco/pygnmi
+      binds:
+        - panel/.:/usr/src/pygnmi/:ro
+      ports:
+        - 8080:8080
+      cmd: flask run --host=0.0.0.0 --port=8080
+      group: "10"
 
   links:
     ############## DC 1 ##############

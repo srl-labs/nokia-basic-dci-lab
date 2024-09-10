@@ -1,0 +1,65 @@
+routers:
+  - system-name: "p1"
+    nos: "sros"
+    mgmt-ip: "172.0.200.11"
+    grpc-port: 57400
+    username: admin
+    password: admin
+    insecure: True
+    skipVerify: False
+  - system-name: "dcgw1-dc1"
+    nos: "sros"
+    mgmt-ip: "172.0.200.101"
+    grpc-port: 57400
+    username: admin
+    password: admin
+    insecure: True
+    skipVerify: False
+  - system-name: "dcgw2-dc1"
+    nos: "sros"
+    mgmt-ip: "172.0.200.102"
+    grpc-port: 57400
+    username: admin
+    password: admin
+    insecure: True
+    skipVerify: False
+  - system-name: "dcgw1-dc2"
+    nos: "sros"
+    mgmt-ip: "172.0.200.201"
+    grpc-port: 57400
+    username: admin
+    password: admin
+    insecure: True
+    skipVerify: False
+  - system-name: "dcgw2-dc2"
+    nos: "sros"
+    mgmt-ip: "172.0.200.202"
+    grpc-port: 57400
+    username: admin
+    password: admin
+    insecure: True
+    skipVerify: False
+  - system-name: "leaf4-dc1"
+    nos: "srl"
+    mgmt-ip: "172.0.200.124"
+    grpc-port: 57400
+    username: admin
+    password: 'NokiaSrl1!'
+    insecure: False
+    skipVerify: True
+  - system-name: "leaf1-dc2"
+    nos: "srl"
+    mgmt-ip: "172.0.200.221"
+    grpc-port: 57400
+    username: admin
+    password: 'NokiaSrl1!'
+    insecure: False
+    skipVerify: True
+  - system-name: "leaf4-dc2"
+    nos: "srl"
+    mgmt-ip: "172.0.200.224"
+    grpc-port: 57400
+    username: admin
+    password: 'NokiaSrl1!'
+    insecure: False
+    skipVerify: True
